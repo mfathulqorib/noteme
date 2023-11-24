@@ -10,9 +10,12 @@ export const NoteHeader = () => {
   return (
     <div className="flex justify-between py-6">
       <div>Noteme.</div>
-      <div>
-        <Plus onClick={addNote} />
-      </div>
+      <button>
+        <Plus
+          className="cursor-pointer hover:text-indigo-600"
+          onClick={addNote}
+        />
+      </button>
     </div>
   );
 };
