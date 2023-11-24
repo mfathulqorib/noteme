@@ -1,5 +1,7 @@
 import { Inter } from "next/font/google";
-import "@/app/styles/globals.css";
+import "../styles/globals.css";
+import { NoteProvider } from "@/component/provider/NoteProvider";
+import { NoteLayout } from "@/component/noteeditor/NoteLayout";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,7 +13,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <NoteLayout>
+          <NoteProvider>{children}</NoteProvider>
+        </NoteLayout>
+      </body>
     </html>
   );
 }
