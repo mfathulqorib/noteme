@@ -1,18 +1,23 @@
 "use client";
 
-import React, { createContext, useState } from "react";
+import { useRouter } from "next/navigation";
+import React, { createContext, useEffect, useState } from "react";
 
 export const NoteContext = createContext();
 
 export const NoteProvider = ({ children }) => {
   const [notes, setNotes] = useState([]);
+  const [email, setEmail] = useState("");
+  const router = useRouter();
 
   function addNote() {
     const newNotes = [...notes];
     const newNote = {
-      body: "",
+      user: "",
+      content: email ? email : "",
+      additionalData: "",
     };
-    newNotes.unshift(newNote);
+    newNotes.push(newNote);
     setNotes(newNotes);
     localStorage.setItem("notes", JSON.stringify(newNotes));
   }
@@ -27,20 +32,38 @@ export const NoteProvider = ({ children }) => {
   function changeContent(index, newContent) {
     const newNotes = [...notes];
     const newNote = {
-      body: newContent,
+      content: newContent,
     };
     newNotes.splice(index, 1, newNote);
     setNotes(newNotes);
     localStorage.setItem("notes", JSON.stringify(newNotes));
   }
 
-  useState(() => {
+  function getEmail(val) {
+    setEmail(val);
+    localStorage.setItem("email", val);
+  }
+
+  useEffect(() => {
     const data = localStorage.getItem("notes");
     const currentNotes = JSON.parse(data);
-    setNotes(currentNotes);
+    const email = localStorage.getItem("email");
+    setNotes(currentNotes ? currentNotes : []);
+    setEmail(email);
   }, []);
+
   return (
-    <NoteContext.Provider value={{ notes, addNote, deleteNote, changeContent }}>
+    <NoteContext.Provider
+      value={{
+        notes,
+        addNote,
+        deleteNote,
+        changeContent,
+        getEmail,
+        email,
+        router,
+      }}
+    >
       {children}
     </NoteContext.Provider>
   );

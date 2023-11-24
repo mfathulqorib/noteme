@@ -1,12 +1,8 @@
-import { NoteCard } from "@/component/noteeditor/NoteCard";
-import { NoteHeader } from "@/component/noteeditor/NoteHeader";
-import { NotePreview } from "@/component/noteeditor/NotePreview";
+"use client";
 
-export default function Page() {
-  return (
-    <div>
-      <NoteHeader />
-      <NotePreview />
-    </div>
-  );
+import { Login } from "@/component/login/Login";
+import React from "react";
+
+export default function page() {
+  return <Login />;
 }

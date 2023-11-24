@@ -13,7 +13,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`overflow-y-scroll custom-scrollbar ${inter.className}`}>
         <NoteLayout>
           <NoteProvider>{children}</NoteProvider>
         </NoteLayout>

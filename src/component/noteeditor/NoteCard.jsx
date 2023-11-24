@@ -14,10 +14,12 @@ export const NoteCard = ({ content, index }) => {
         rows={6}
         value={content}
         placeholder="Make a note."
+        key={`txt${index}`}
       ></textarea>
       <button
         className="bg-rose-500 text-white text-xs p-2 font-medium rounded-lg hover:bg-rose-600 select-none"
         onClick={() => deleteNote(index)}
+        key={`btn${index}`}
       >
         Delete
       </button>
