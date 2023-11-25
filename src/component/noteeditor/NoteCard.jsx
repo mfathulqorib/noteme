@@ -4,7 +4,7 @@ import { NoteContext } from "../provider/NoteProvider";
 import { useContext } from "react";
 
 export const NoteCard = ({ content, index }) => {
-  const { deleteNote, changeContent } = useContext(NoteContext);
+  const { deleteNote, changeContent, email } = useContext(NoteContext);
 
   return (
     <div>

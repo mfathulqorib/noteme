@@ -1,21 +1,32 @@
 "use client";
 
+import { data } from "autoprefixer";
 import { useRouter } from "next/navigation";
 import React, { createContext, useEffect, useState } from "react";
 
 export const NoteContext = createContext();
 
-export const NoteProvider = ({ children }) => {
-  const [notes, setNotes] = useState([]);
+export const NoteProvider = ({ children, datapi }) => {
+  const filterDataApi = datapi.filter(function ({ user }) {
+    return user === "me@nuhafadh.com";
+  });
+  // localStorage.setItem("notes", JSON.stringify(filterDataApi));
+  const [notes, setNotes] = useState([datapi]);
   const [email, setEmail] = useState("");
   const router = useRouter();
+  console.log(notes);
 
   function addNote() {
     const newNotes = [...notes];
     const newNote = {
-      user: "",
-      content: email ? email : "",
       additionalData: "",
+      collectionId: "",
+      collectionName: "",
+      content: "",
+      created: "",
+      id: "",
+      updated: "",
+      user: email ? email : "",
     };
     newNotes.push(newNote);
     setNotes(newNotes);

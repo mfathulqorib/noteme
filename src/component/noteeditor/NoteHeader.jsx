@@ -9,7 +9,7 @@ export const NoteHeader = () => {
 
   return (
     <header className="sticky top-0 z-10 bg-white select-none">
-      <div className="flex justify-between py-6">
+      <div className="flex justify-between pt-2 pb-3 mt-2 mb-3">
         <div className="flex flex-col gap-y-1">
           <div>Noteme.</div>
           <h3 className="text-xs flex gap-x-1 items-center">
