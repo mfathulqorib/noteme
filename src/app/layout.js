@@ -8,6 +8,8 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "Noteme",
   description: "Simple note app",
+  name: "viewport",
+  content: "width=device-width, initial-scale=1.0",
 };
 
 export default async function RootLayout({ children }) {
