@@ -14,7 +14,7 @@ export const Login = () => {
   return (
     <>
       <form
-        className="flex flex-col m-auto gap-y-1 justify-center h-[100vh] max-w-xl"
+        className="flex flex-col m-auto gap-y-1 justify-center h-[100vh] max-w-xl px-2"
         onSubmit={handleFormSubmit}
       >
         <label className="w-fit" htmlFor="email" id="email-lable">
