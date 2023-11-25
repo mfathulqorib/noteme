@@ -14,7 +14,7 @@ export const Login = () => {
   return (
     <>
       <form
-        className="flex flex-col m-auto gap-y-1 justify-center h-[100vh]"
+        className="flex flex-col m-auto gap-y-1 justify-center h-[100vh] max-w-xl"
         onSubmit={handleFormSubmit}
       >
         <label
@@ -25,7 +25,7 @@ export const Login = () => {
         </label>
         <input
           required
-          className="border-2 py-2 px-4 rounded-lg"
+          className="border-2 py-2 px-4 rounded-lg focus:outline-none"
           type="email"
           id="email"
           name="email"

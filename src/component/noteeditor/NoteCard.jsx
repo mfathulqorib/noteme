@@ -31,7 +31,7 @@ export const NoteCard = ({ content, index, id }) => {
     <div>
       <textarea
         onChange={handleChange}
-        className="w-full bg-[#f4a261] text-black focus:outline-none p-3 text-sm rounded-lg resize-none placeholder:text-white placeholder:font-medium font-medium"
+        className="w-full bg-[#f4a261] hover:bg-[#f2be94] text-black focus:outline-none p-3 text-sm rounded-lg resize-none placeholder:text-white placeholder:font-medium font-medium"
         rows={6}
         value={input}
         placeholder="Make a note..."

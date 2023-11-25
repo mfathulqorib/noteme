@@ -42,12 +42,15 @@ export const updateNoteAPI = async (id, updatedNote) => {
         "Content-Type": "application/json",
       },
     });
-    console.log("from api", response);
     if (response.status === 200) {
       const data = await response.json();
+      console.log(
+        `success update data. Respone:${response.status} Data:`,
+        data
+      );
       return data;
     } else {
-      console.log("Error updating data. Status:", response.status);
+      console.log("Error updating data. Status: ", response.status);
     }
   } catch (error) {}
 };
@@ -61,6 +64,6 @@ export const deleteNoteAPI = async (id) => {
       return false;
     }
   } catch (error) {
-    // console.error('Error deleting data', error);
+    console.error("Error deleting data. Status: ", response.status);
   }
 };

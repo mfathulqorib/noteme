@@ -15,20 +15,21 @@ export const NoteHeader = () => {
           <h3 className="text-[0.8rem] flex gap-x-1 items-center">
             {`Hello ${email}`}
             <span>
-              <Smile size={10} />
+              <Smile size={12} />
             </span>
           </h3>
         </div>
         <div className="flex gap-x-3">
-          <button>
-            <Plus
-              className="cursor-pointer hover:text-indigo-600"
-              onClick={addNote}
-            />
+          <button
+            onClick={addNote}
+            className="cursor-pointer hover:text-[#264653] focus:outline-none flex gap-1 items-center"
+          >
+            <span className="hidden md:inline">Add note</span>
+            <Plus size={20} />
           </button>
-          <button>
+          <button className="focus:outline-none">
             <LogOut
-              className="cursor-pointer hover:text-indigo-600"
+              className="cursor-pointer hover:text-[#264653]"
               onClick={() => router.push("/")}
             />
           </button>
