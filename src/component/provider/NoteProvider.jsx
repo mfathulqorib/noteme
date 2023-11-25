@@ -3,65 +3,99 @@
 import { data } from "autoprefixer";
 import { useRouter } from "next/navigation";
 import React, { createContext, useEffect, useState } from "react";
+import { fetchNotes, deleteNoteAPI, createNoteAPI, updateNoteAPI } from "@/api/notes";
 
 export const NoteContext = createContext();
 
-export const NoteProvider = ({ children, datapi }) => {
-  const filterDataApi = datapi.filter(function ({ user }) {
-    return user === "me@nuhafadh.com";
-  });
-  // localStorage.setItem("notes", JSON.stringify(filterDataApi));
-  const [notes, setNotes] = useState([datapi]);
+export const NoteProvider = ({ children, datapi }) => { 
+
+  // 1. Component Did Mount
+  // useEffect(() => {
+  //    function()
+  // }, [])
+  // Mounted 
+  // 2. Component Did Update
+  // useEffect(() => {
+  //    function()
+  // }, [email, notes])
+  // After updated
+  // 3. Component Will Unmount
+  // useEffect(() => {
+  // return (() => {
+  //    })
+  // })
+  // Hello fahrul.razix@gmail.com
+
+  // useState
+
+  const [notes, setNotes] = useState([]);
+  // notes harus immutable / read only
   const [email, setEmail] = useState("");
   const router = useRouter();
-  console.log(notes);
 
-  function addNote() {
-    const newNotes = [...notes];
-    const newNote = {
-      additionalData: "",
-      collectionId: "",
-      collectionName: "",
-      content: "",
-      created: "",
-      id: "",
-      updated: "",
-      user: email ? email : "",
-    };
-    newNotes.push(newNote);
-    setNotes(newNotes);
-    localStorage.setItem("notes", JSON.stringify(newNotes));
+  const getDataFromAPI = async () => { 
+    const result = await fetchNotes()
+    setNotes([...result])  
   }
 
-  function deleteNote(index) {
-    const newNotes = [...notes];
-    newNotes.splice(index, 1);
-    setNotes(newNotes);
-    localStorage.setItem("notes", JSON.stringify(newNotes));
+  const setEmailToLocalStorage = () => {
+    const email = localStorage.getItem("email");
+    setEmail(email);
+  }
+  
+  useEffect(() => {
+    getDataFromAPI()
+    setEmailToLocalStorage() 
+    // const data = localStorage.getItem("notes");
+    // const currentNotes = JSON.parse(data);
+    // setNotes(currentNotes ? currentNotes : []);
+  }, [email]);
+
+  async function addNote() {
+    try {
+      const newNoteData = {
+        content: '',
+        user: email ?? '',
+        additionalData: ''
+      }
+      const newNote = await createNoteAPI(JSON.stringify(newNoteData))
+      if (newNote) { 
+        setNotes((currentNotes) => [newNote, ...currentNotes]) 
+      }
+    } catch (error) { } 
   }
 
-  function changeContent(index, newContent) {
-    const newNotes = [...notes];
-    const newNote = {
+  async function deleteNote(noteId) { 
+    try {
+      const isSuccess = await deleteNoteAPI(noteId)
+      if (isSuccess) {
+        setNotes((currentNotes) => {
+          const newNotes = [...currentNotes] 
+          const deletedIndex = newNotes.findIndex(n => n.id === noteId) 
+          if (deletedIndex !== -1) {
+            newNotes.splice(deletedIndex, 1);
+          }
+          return newNotes
+        })
+      } else {
+        console.log('Fail to delete, note id = ', noteId)
+      }
+    } catch (error) { }
+  }
+
+  function changeContent(noteId, newContent) {
+    const newNoteData = {
       content: newContent,
-    };
-    newNotes.splice(index, 1, newNote);
-    setNotes(newNotes);
-    localStorage.setItem("notes", JSON.stringify(newNotes));
-  }
+      user: email ?? '',
+      additionalData: ''
+    }
+    updateNoteAPI(noteId, JSON.stringify(newNoteData))
+  } 
 
   function getEmail(val) {
     setEmail(val);
     localStorage.setItem("email", val);
   }
-
-  useEffect(() => {
-    const data = localStorage.getItem("notes");
-    const currentNotes = JSON.parse(data);
-    const email = localStorage.getItem("email");
-    setNotes(currentNotes ? currentNotes : []);
-    setEmail(email);
-  }, []);
 
   return (
     <NoteContext.Provider

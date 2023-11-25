@@ -28,8 +28,8 @@ export const NotePreview = () => {
 
   return (
     <div className="grid grid-cols-2 gap-6">
-      {notes.map(({ content }, index) => {
-        return <NoteCard key={index} content={content} index={index} />;
+      {notes.map(({ content, id }, index) => {
+        return <NoteCard key={id} content={content} index={index} id={id} />;
       })}
     </div>
   );
