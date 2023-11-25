@@ -14,21 +14,28 @@ export const Login = () => {
   return (
     <>
       <form
-        className="flex flex-col m-auto gap-y-3"
+        className="flex flex-col m-auto gap-y-1 justify-center h-[100vh]"
         onSubmit={handleFormSubmit}
       >
-        <label className="border-2 select-none text-center" htmlFor="email">
-          Masukan email anda :)
+        <label
+          className=" select-none mb-20 text-[#264653] text-[6rem] font-bold"
+          htmlFor="email"
+        >
+          Noteme.
         </label>
         <input
           required
-          className="border-2"
+          className="border-2 py-2 px-4 rounded-lg"
           type="email"
           id="email"
           name="email"
+          placeholder="Please enter your email..."
           onChange={(e) => getEmail(e.target.value)}
         ></input>
-        <button className="border-2" type="submit">
+        <button
+          className="border-2 bg-[#2a9d8f] hover:bg-[#238c7f] text-white py-1 px-2 rounded-lg"
+          type="submit"
+        >
           Submit
         </button>
       </form>

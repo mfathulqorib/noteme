@@ -3,34 +3,38 @@
 import { useContext, useState } from "react";
 import { NoteContext } from "../provider/NoteProvider";
 import { NoteCard } from "./NoteCard";
+import { Plus } from "lucide-react";
 
 export const NotePreview = () => {
-  const { notes, email } = useContext(NoteContext);
+  const { notes, addNote } = useContext(NoteContext);
 
-  // const newData = [...notes];
-  // const dataApi = dataNotes.filter(function ({ user }) {
-  //   return user === "me@nuhafadh.com";
-  // });
-  // const dataApi = {
-  //   additionalData: "",
-  //   collectionId: "496u3oudwj80y8y",
-  //   collectionName: "notes",
-  //   content: "sdfsdfs",
-  //   created: "2023-11-23 14:57:24.513Z",
-  //   id: "taor13rhjs7sd7s",
-  //   updated: "2023-11-23 14:57:24.513Z",
-  //   user: "me@nuhafadh.com",
-  // };
-  // newData.push(dataApi);
-  // console.log(newData);
-  // newData.push(notes);
-  // const newData = notes.push(data);
-
-  return (
-    <div className="grid grid-cols-2 gap-6">
-      {notes.map(({ content, id }, index) => {
-        return <NoteCard key={id} content={content} index={index} id={id} />;
-      })}
-    </div>
-  );
+  if (notes.length === 0) {
+    return (
+      <div className="h-[84.6vh] max-h-max w-full">
+        <div className="w-max mx-auto py-[12em]">
+          <button
+            className=" text-gray-400 mx-auto hover:bg-orange-400 hover:text-white py-3 px-4 rounded-lg border-[3pt] border-dashed border-orange-400"
+            onClick={addNote}
+          >
+            <div className="text-sm flex gap-1 justify-around items-center">
+              {" "}
+              Add note <Plus size={20} />
+            </div>
+          </button>
+        </div>
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <div className="h-[84.6vh] max-h-max w-full flex flex-col gap-6 overflow-y-auto custom-scrollbar pr-4 pb-4">
+          {notes.map(({ content, id }, index) => {
+            return (
+              <NoteCard key={id} content={content} index={index} id={id} />
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
 };

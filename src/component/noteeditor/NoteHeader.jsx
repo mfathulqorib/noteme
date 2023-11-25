@@ -8,11 +8,11 @@ export const NoteHeader = () => {
   const { addNote, router, email } = useContext(NoteContext);
 
   return (
-    <header className="sticky top-0 z-10 bg-white select-none">
-      <div className="flex justify-between pt-2 pb-3 mt-2 mb-3">
+    <header className="text-[#2a9d8f] sticky top-0 z-10 select-none px-2 ">
+      <div className="flex justify-between pt-2 pb-4">
         <div className="flex flex-col gap-y-1">
-          <div>Noteme.</div>
-          <h3 className="text-xs flex gap-x-1 items-center">
+          <div className=" font-semibold text-xl ">Noteme.</div>
+          <h3 className="text-[0.8rem] flex gap-x-1 items-center">
             {`Hello ${email}`}
             <span>
               <Smile size={10} />
