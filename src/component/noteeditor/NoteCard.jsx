@@ -14,10 +14,11 @@ export const NoteCard = ({ content, index, id }) => {
 
   useEffect(() => {
     if (content !== input) {
+      // If Notes.content !== input, invoke debounce func
       processChange(input);
     }
     return () => {
-      processChange.cancel(); // Cleanup the debounced function
+      processChange.cancel(); // Cleanup the debounced func
     };
   }, [input]);
 
@@ -25,6 +26,7 @@ export const NoteCard = ({ content, index, id }) => {
     changeContent(id, input);
   }
 
+  // With debounce, func will invoke after 500ms after last trigger
   const processChange = useMemo(() => debounce(changeNote, 500), []);
 
   return (
