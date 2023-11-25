@@ -21,7 +21,7 @@ export const Login = () => {
           className=" select-none mb-20 text-[#264653] text-[6rem] font-bold"
           htmlFor="email"
         >
-          Noteme.
+          Notemeee.
         </label>
         <input
           required
