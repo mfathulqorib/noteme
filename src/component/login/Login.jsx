@@ -17,7 +17,7 @@ export const Login = () => {
         className="flex flex-col m-auto gap-y-1 justify-center h-[100vh] max-w-xl px-2"
         onSubmit={handleFormSubmit}
       >
-        <label className="w-fit" htmlFor="email" id="email-lable">
+        <label className="w-fit mb-12" htmlFor="email" id="email-lable">
           Noteme.
         </label>
         <input
@@ -30,7 +30,7 @@ export const Login = () => {
           onChange={(e) => getEmail(e.target.value)}
         ></input>
         <button
-          className="border-2 bg-[#2a9d8f] hover:bg-[#238c7f] text-white py-1 px-2 rounded-lg"
+          className=" bg-[#2a9d8f] hover:bg-[#238c7f] text-white py-1 px-2 rounded-lg"
           type="submit"
         >
           Submit
