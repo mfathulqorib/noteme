@@ -15,4 +15,39 @@
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     @apply bg-[#454f6b];
   }
+
+  label#email {
+    position: relative;
+    font-size: 6rem;
+    color: #383d52;
+    -webkit-text-stroke: 0.2vw #383d52;
+    font-weight: 600;
+    /* @apply select-none mb-20 text-[#264653] text-[6rem] font-bold; */
+  }
+
+  label#email::before {
+    content: "Noteme.";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 90%;
+    color: #e76f51;
+    -webkit-text-stroke: 0.2vw #e76f51;
+    border-right: 2px solid #264653;
+    overflow: hidden;
+    animation: animate 4s ease-out infinite;
+  }
+
+  @keyframes animate {
+    0%,
+    10%,
+    100% {
+      width: 0;
+    }
+    80%,
+    90% {
+      width: 100%;
+    }
+  }
 }
