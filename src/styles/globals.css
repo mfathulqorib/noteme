@@ -16,7 +16,7 @@
     @apply bg-[#454f6b];
   }
 
-  label#email {
+  label#email-lable {
     position: relative;
     font-size: 6rem;
     color: #383d52;
@@ -25,7 +25,7 @@
     /* @apply select-none mb-20 text-[#264653] text-[6rem] font-bold; */
   }
 
-  label#email::before {
+  label#email-lable::before {
     content: "Noteme.";
     position: absolute;
     top: 0;

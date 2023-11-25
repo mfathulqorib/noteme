@@ -17,7 +17,7 @@ export const Login = () => {
         className="flex flex-col m-auto gap-y-1 justify-center h-[100vh] max-w-xl"
         onSubmit={handleFormSubmit}
       >
-        <label className="w-fit" htmlFor="email" id="email">
+        <label className="w-fit" htmlFor="email" id="email-lable">
           Noteme.
         </label>
         <input
