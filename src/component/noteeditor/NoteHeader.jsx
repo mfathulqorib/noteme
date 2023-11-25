@@ -19,19 +19,20 @@ export const NoteHeader = () => {
             </span>
           </h3>
         </div>
-        <div className="flex gap-x-3">
+        <div className="flex gap-x-3 items-center">
           <button
             onClick={addNote}
-            className="cursor-pointer hover:text-[#264653] focus:outline-none flex gap-1 items-center"
+            className="h-fit cursor-pointer hover:text-[#264653] focus:outline-none flex gap-1 items-center"
           >
             <span className="hidden md:inline">Add note</span>
             <Plus size={20} />
           </button>
-          <button className="focus:outline-none">
-            <LogOut
-              className="cursor-pointer hover:text-[#264653]"
-              onClick={() => router.push("/")}
-            />
+          <button
+            onClick={() => router.push("/")}
+            className="focus:outline-none cursor-pointer hover:text-[#264653] h-fit
+            "
+          >
+            <LogOut />
           </button>
         </div>
       </div>
