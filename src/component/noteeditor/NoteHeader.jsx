@@ -8,7 +8,7 @@ export const NoteHeader = () => {
   const { addNote, router, email } = useContext(NoteContext);
 
   return (
-    <header className="text-[#2a9d8f] sticky top-0 z-10 select-none px-2 ">
+    <header className="text-[#2a9d8f] sticky top-0 z-10 select-none px-3 ">
       <div className="flex justify-between pt-2 pb-4">
         <div className="flex flex-col gap-y-1">
           <div className=" font-semibold text-xl ">Noteme.</div>

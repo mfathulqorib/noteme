@@ -27,7 +27,7 @@ export const NotePreview = () => {
   } else {
     return (
       <div>
-        <div className="h-[84.6vh] max-h-max w-full flex flex-col gap-6 overflow-y-auto custom-scrollbar pr-4 pb-4">
+        <div className="h-[84.6vh] max-h-max w-full flex flex-col gap-6 overflow-y-auto custom-scrollbar pl-3 pr-4 pb-4">
           {notes.map(({ content, id }, index) => {
             return (
               <NoteCard key={id} content={content} index={index} id={id} />

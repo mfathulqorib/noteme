@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { NoteContext } from "../provider/NoteProvider";
 
 export const Login = () => {
@@ -21,7 +21,7 @@ export const Login = () => {
           className=" select-none mb-20 text-[#264653] text-[6rem] font-bold"
           htmlFor="email"
         >
-          Notemeee.
+          Noteme.
         </label>
         <input
           required

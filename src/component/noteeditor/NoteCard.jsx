@@ -34,7 +34,7 @@ export const NoteCard = ({ content, index, id }) => {
         className="w-full bg-[#f4a261] text-black focus:outline-none p-3 text-sm rounded-lg resize-none placeholder:text-white placeholder:font-medium font-medium"
         rows={6}
         value={input}
-        placeholder="Make a note."
+        placeholder="Make a note..."
         key={`txt${index}`}
       ></textarea>
       <button
