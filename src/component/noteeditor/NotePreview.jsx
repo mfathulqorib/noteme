@@ -11,9 +11,9 @@ export const NotePreview = () => {
   if (notes.length === 0) {
     return (
       <div className="h-[83.7vh] max-h-max w-full">
-        <div className="w-max mx-auto py-[12em]">
+        <div className="w-max mx-auto h-full">
           <button
-            className=" text-gray-400 mx-auto hover:bg-orange-400 hover:text-white py-3 px-4 rounded-lg border-[3pt] border-dashed border-orange-400"
+            className=" text-gray-400 mt-[20vh] hover:bg-orange-400 hover:text-white py-3 px-4 rounded-lg border-[3pt] border-dashed border-orange-400"
             onClick={addNote}
           >
             <div className="text-sm flex gap-1 justify-around items-center">
